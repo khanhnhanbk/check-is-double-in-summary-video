@@ -15,6 +15,13 @@ async function getPageContent(id) {
   return response.results;
 }
 
+function youtube_parser(url) {
+  var regExp =
+    /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+  var match = url.match(regExp);
+  return match && match[7].length == 11 ? match[7] : false;
+}
+
 finallyData = [];
 
 function a() {
@@ -22,15 +29,15 @@ function a() {
     let tempData = {
       title: data[i].title,
       url: data[i].url,
-      content: null,
+      videoId: null,
     };
     getPageContent(data[i].id).then((res, rax) => {
       // console.log(res);
       // file item has type == 'video' in res
       res.forEach((item) => {
         if (item.type === 'video') {
-          if (tempData.content == null) {
-            tempData.content = item.video.external.url;
+          if (tempData.videoId == null) {
+            tempData.videoId = youtube_parser(item.video.external.url);
           }
         }
       });
