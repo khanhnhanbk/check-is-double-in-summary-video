@@ -46,15 +46,9 @@ button.onclick = function () {
       let h1 = document.createElement('h1');
       h1.innerHTML = check.title;
       div.appendChild(h1);
-      let p = document.createElement('p');
-      p.innerHTML = check.description;
-      div.appendChild(p);
-      let img = document.createElement('img');
-      img.setAttribute('src', check.image);
-      div.appendChild(img);
       let a = document.createElement('a');
       a.setAttribute('href', check.url);
-      a.innerHTML = 'Watch on youtube';
+      a.innerHTML = 'Link notion';
       div.appendChild(a);
     }
   }
