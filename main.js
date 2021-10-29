@@ -92,7 +92,7 @@ button.onclick = function () {
       h2.style.color = '#D41C1C';
       h2.style.display = 'block';
       h2.style.margin = '0 auto';
-      h2.style.width = '0%';
+      h2.style.width = '100%';
       h2.style.textAlign = 'center';
     }
     // if video is found
