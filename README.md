@@ -1,1 +1,1 @@
-# check-is-double-in-summary-video
+# Check if video is existed in youtube videos summary
