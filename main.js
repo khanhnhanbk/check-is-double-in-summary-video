@@ -48,7 +48,7 @@ button.onclick = function () {
       div.appendChild(h1);
       let a = document.createElement('a');
       a.setAttribute('href', check.url);
-      a.innerHTML = 'Link notion';
+      a.innerHTML = 'Click vào đây để xem chi tiết trong notion';
       div.appendChild(a);
     }
   }
