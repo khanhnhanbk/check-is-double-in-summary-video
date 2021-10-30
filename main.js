@@ -1,6 +1,6 @@
 let myData;
 // get data from local json file
-fetch('./data/finallyData.json')
+fetch('./backEnd/data/finallyData.json')
   .then((response) => response.json())
   .then((data) => {
     myData = data;
