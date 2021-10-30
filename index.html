@@ -11,7 +11,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <!-- add  favicon -->
+    <link rel="stylesheet" href="main.css" />
     <link
       rel="shortcut icon"
       href="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02271ceb-7124-4298-8335-723d5ae79aef%2Fyoutube-circle-icon-png-8.jpg?table=block&id=eb3bc80a-c84f-4c5f-87cc-63c15335fb32&spaceId=af1be2ce-9063-4f37-9cd0-e6b96f4a8a01&width=250&userId=eaae5b02-0cdb-4a28-8f93-d26c987000f0&cache=v2"
@@ -21,42 +21,34 @@
   <body>
     <!-- add page header -->
     <header>
-      <nav
-        class="navbar navbar-expand-lg"
-        style="
-          background-image: url('https://www.notion.so/image/https%3A%2F%2Fstatic.independent.co.uk%2Fs3fs-public%2Fthumbnails%2Fimage%2F2015%2F10%2F22%2F13%2F463842675.jpg%3Fwidth%3D1200%26auto%3Dwebp%26quality%3D75?table=block&id=eb3bc80a-c84f-4c5f-87cc-63c15335fb32&spaceId=af1be2ce-9063-4f37-9cd0-e6b96f4a8a01&width=2000&userId=eaae5b02-0cdb-4a28-8f93-d26c987000f0&cache=v2');
-          height: 30vh;
-          background-size: cover;
-          background-position: 50% 40%;
-        "
-      >
+      <nav class="navbar navbar-expand-lg">
         <a
-          class="navbar-brand"
+          class="nav-a"
           href="https://www.notion.so/YouTube-videos-summary-eb3bc80ac84f4c5f87cc63c15335fb32"
         >
           <img
-            src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02271ceb-7124-4298-8335-723d5ae79aef%2Fyoutube-circle-icon-png-8.jpg?table=block&id=eb3bc80a-c84f-4c5f-87cc-63c15335fb32&spaceId=af1be2ce-9063-4f37-9cd0-e6b96f4a8a01&width=250&userId=eaae5b02-0cdb-4a28-8f93-d26c987000f0&cache=v2"
-            width="100vh"
+            src="https://freeiconshop.com/wp-content/uploads/edd/youtube-flat.png"
+            width="30vw"
             class="d-inline-block align-top"
             alt=""
           />
         </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
       </nav>
     </header>
-    <div class="root" id="root"></div>
+    <div class="root" id="root">
+      <div class="root" id="root" style="margin: 0px auto; width: 100%">
+        <h1>Check is existed</h1>
+        <input
+          type="text"
+          id="input"
+          placeholder="Enter youtube url here"
+        /><button id="button-check">Check</button>
+        <div id="div-result">
+        </div>
+      </div>
+    </div>
     <!-- add footer -->
-    <footer style="position: fixed; bottom: 0%; ">
+    <footer>
       <p>
         Based on the idea of:
         <a href="https://www.facebook.com/profile.php?id=100014140606682"
