@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Check is existed</title>
+    <title>Search by name</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -26,7 +26,7 @@
       >
         <ul class="nav nav-pills">
           <li class="nav-item">
-            <a href="#" class="nav-link active" aria-current="page">Home</a>
+            <a href="./" class="nav-link active" aria-current="page">Home</a>
           </li>
           <li class="nav-item">
             <a href="./search-by-name.html" class="nav-link">Search</a>
@@ -34,34 +34,28 @@
         </ul>
       </header>
     </div>
-
     <div class="root" id="root">
       <div class="root" id="root" style="margin: 0px auto; width: 100%">
-        <h1>Check is existed</h1>
+        <h1>Search by name</h1>
         <input
           type="text"
-          id="input"
-          placeholder="Enter youtube url here"
-        /><button id="button-check">Check</button>
-        <div id="div-result"></div>
+          id="searchInput"
+          placeholder="Input a part of the name, ex: 'How to' "
+        /><button id="searchButton">Seach</button>
+        <div id="resultDiv"></div>
       </div>
     </div>
     <!-- add footer -->
-    <footer>
-      <p>
-        Based on the idea of:
-        <a href="https://www.facebook.com/profile.php?id=100014140606682"
-          >Nguyễn Nguyên Bách</a
-        >
-      </p>
+    <!-- <footer>
       <p>
         Created by:
         <a href="https://www.facebook.com/nguyenvankhanhnhan/"
           >Nguyễn Văn Khánh Nhân</a
         >
       </p>
-    </footer>
+    </footer> -->
     <!-- add script -->
     <script src="main.js"></script>
+    <script src="search.js"></script>
   </body>
 </html>
