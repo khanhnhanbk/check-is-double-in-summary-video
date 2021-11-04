@@ -28,15 +28,23 @@ function searchByName(searchValue) {
       return 'No result found';
     } else {
       return `<h1>Search Result</h1>
-          <ul>
+        
               ${data
                 .map(function (item) {
-                  return `<li>
-                  <a href="${item.url}">${item.title}</a>
-                  </li>`;
+                  return `
+                  <div class="col-4" style="margin-top: 20px">
+                  <div class="card" style="width: 18rem">
+                  <div class="card-body">
+                    <iframe width="100%"
+                        src="https://www.youtube.com/embed/${item.videoId}">
+                    </iframe>
+                    <h5 class="card-title">${item.title}</h5>
+                    <a href="${item.url}" class="btn btn-primary">Go to Notion</a>
+                  </div>
+                  </div>
+                </div>`;
                 })
                 .join('')}
-          </ul>  
         `;
     }
   }
@@ -75,9 +83,17 @@ function searchByUrl(searchValue) {
     } else {
       // if video is found
       return `
-      <h1>${check.title}</h1>
-      <a href="${check.url}">Click here to watch</a>
-      `;
+              <div class="col-8">
+                  <div class="card" style="width: 40rem">
+                  <div class="card-body">
+                  <iframe width="100%" height="315"
+                        src="https://www.youtube.com/embed/${check.videoId}">
+                    </iframe>
+              <h5 class="card-title">${check.title}</h5>
+                    <a href="${check.url}" class="btn btn-primary">Go to Notion</a>
+                  </div>
+                  </div>
+                </div>`;
     }
   }
 }

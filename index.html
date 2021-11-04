@@ -4,64 +4,74 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Check is existed</title>
+    <title>Test</title>
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="main.css" />
-    <link
-      rel="shortcut icon"
-      href="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02271ceb-7124-4298-8335-723d5ae79aef%2Fyoutube-circle-icon-png-8.jpg?table=block&id=eb3bc80a-c84f-4c5f-87cc-63c15335fb32&spaceId=af1be2ce-9063-4f37-9cd0-e6b96f4a8a01&width=250&userId=eaae5b02-0cdb-4a28-8f93-d26c987000f0&cache=v2"
-      type="image/x-icon"
-    />
   </head>
   <body>
-    <!-- add page header -->
-    <div class="container">
-      <header
-        class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
-      >
-        <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a href="#" class="nav-link active" aria-current="page">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="./search-by-name.html" class="nav-link">Search</a>
-          </li>
-        </ul>
-      </header>
-    </div>
-
-    <div class="root" id="root">
-      <div class="root" id="root" style="margin: 0px auto; width: 100%">
-        <h1>Check is existed</h1>
-        <input
-          type="text"
-          id="input"
-          placeholder="Enter youtube url here"
-        /><button id="button-check">Check</button>
-        <div id="div-result"></div>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <a
+          class="navbar-brand"
+          href="https://www.notion.so/YouTube-videos-summary-eb3bc80ac84f4c5f87cc63c15335fb32"
+        >
+          <img
+            src="data:image/png;base64,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"
+            alt=""
+            width="30"
+            height="30"
+            class="d-inline-block align-text-top"
+          />
+          YouTube videos summary
+        </a>
+      </div>
+    </nav>
+    <div class="container" style="margin-top: 40px">
+      <div class="row">
+        <div class="col-3">
+          <select class="form-select" name="mode" id="select">
+            <option>Search by url</option>
+            <option>Search by part of name</option>
+          </select>
+        </div>
+        <div class="col-6">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Input video url here. Ex:'https://youtu.be/YtogsU12Tr8'"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            id="search"
+          />
+        </div>
+        <div class="col-3">
+          <button type="button" class="btn btn-primary" id="search-button">
+            Search
+          </button>
+        </div>
       </div>
     </div>
-    <!-- add footer -->
-    <footer>
-      <p>
-        Based on the idea of:
-        <a href="https://www.facebook.com/profile.php?id=100014140606682"
-          >Nguyễn Nguyên Bách</a
-        >
-      </p>
-      <p>
-        Created by:
-        <a href="https://www.facebook.com/nguyenvankhanhnhan/"
-          >Nguyễn Văn Khánh Nhân</a
-        >
-      </p>
-    </footer>
-    <!-- add script -->
+    <div class="container" style="margin-top: 40px">
+      <div class="row" id="results"></div>
+    </div>
+    <script src="function.js"></script>
     <script src="main.js"></script>
+    <script>
+      let select = document.getElementById('select');
+      select.addEventListener('change', function () {
+        let search = document.getElementById('search');
+        if (select.value == 'Search by url') {
+          search.placeholder =
+            'Input video url here. Ex: "https://youtu.be/YtogsU12Tr8"';
+        } else {
+          search.placeholder = 'Input part of name: Ex: "example"';
+        }
+      });
+    </script>
   </body>
 </html>
