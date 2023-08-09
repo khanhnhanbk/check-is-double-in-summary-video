@@ -1,60 +1,60 @@
-require('dotenv').config();
-const { Client } = require('@notionhq/client');
-const fs = require('fs');
+require("dotenv").config();
+const { Client } = require("@notionhq/client");
+const fs = require("fs/promises");
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
-const data = require('./data/trimData.json');
-async function getPageContent(id) {
-  const blockId = id;
-  const response = await notion.blocks.children.list({
-    block_id: blockId,
-  });
-  //   console.log(response);
-  //   content = response.results[0].video.external.url;
+const trimData = require("./data/trimData.json");
 
-  return response.results;
-}
-
-function youtube_parser(url) {
-  var regExp =
-    /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-  var match = url.match(regExp);
-  return match && match[7].length == 11 ? match[7] : false;
-}
-
-finallyData = [];
-
-function a() {
-  for (let i = 0; i < data.length; i++) {
-    let tempData = {
-      title: data[i].title,
-      url: data[i].url,
-      videoId: null,
-    };
-    getPageContent(data[i].id).then((res, rax) => {
-      // console.log(res);
-      // file item has type == 'video' in res
-      res.forEach((item) => {
-        if (item.type === 'video') {
-          if (tempData.videoId == null) {
-            tempData.videoId = youtube_parser(item.video.external.url);
-          }
-        }
-      });
-      finallyData.push(tempData);
-      b();
-    });
+async function getPageContent(blockId) {
+  try {
+    const response = await notion.blocks.children.list({ block_id: blockId });
+    return response.results;
+  } catch (error) {
+    console.error(`Error fetching page content: ${error.message}`);
+    return [];
   }
 }
 
-function b() {
-  temp = JSON.stringify(finallyData);
-  fs.writeFile('./data/finallyData.json', temp, (err) => {
-    if (err) throw err;
-  });
+function extractYoutubeVideoId(url) {
+  const regExp =
+    /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+  const match = url.match(regExp);
+  return match && match[7].length === 11 ? match[7] : null;
 }
-a();
-// setTimeout(() => {
-//   console.log('ghi');
-//   b();
-// }, 2000);
+
+async function processPageData(pageData) {
+  const videoIdPromises = pageData.map(async (item) => {
+    if (item.type === "video") {
+      return extractYoutubeVideoId(item.video.external.url);
+    }
+    return null;
+  });
+
+  const videoIds = await Promise.all(videoIdPromises);
+  return videoIds.filter((id) => id !== null);
+}
+
+async function main() {
+  try {
+    const processedData = await Promise.all(
+      trimData.map(async (item) => {
+        const pageContent = await getPageContent(item.id);
+        const videoIds = await processPageData(pageContent);
+
+        return {
+          title: item.title,
+          url: item.url,
+          videoIds,
+        };
+      })
+    );
+
+    const outputPath = "./data/finallyData.json";
+    await fs.writeFile(outputPath, JSON.stringify(processedData, null, 2));
+    console.log(`Processed data saved to ${outputPath}`);
+  } catch (error) {
+    console.error(`An error occurred: ${error.message}`);
+  }
+}
+
+main();
