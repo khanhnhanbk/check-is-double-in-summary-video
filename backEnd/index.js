@@ -4,13 +4,28 @@ const fs = require("fs/promises");
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const databaseId = process.env.NOTION_API_DATABASE;
+// Get all pages and update url each page
+const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 
 const fetchDataFromNotion = async () => {
   try {
-    const response = await notion.databases.query({ database_id: databaseId });
-    const data = response.results.map((result) => ({
+    const results = [];
+    let next_cursor = undefined;
+    while (true) {
+      const response = await notion.databases.query({
+        database_id: databaseId,
+        start_cursor: next_cursor,
+      });
+      results.push(...response.results);
+      next_cursor = response.next_cursor;
+      if (next_cursor === null) {
+        break;
+      }
+      sleep(300);
+    }
+    const data = results.map((result) => ({
       id: result.id,
-      title: result.properties.Title.title[0].plain_text,
+      title: result.properties.Title.title[0]?.plain_text,
       url: result.url,
     }));
     return data;
